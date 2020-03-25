@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1584636949 source:c:\users\valentin\desktop\proiectul1poo\src\fractie.cpp
+	"Fractie.h"
+	<iostream>
+
+1584636949 c:\users\valentin\desktop\proiectul1poo\include\fractie.h
+
+1584636824 source:c:\users\valentin\desktop\proiectul1poo\main.cpp
+	<iostream>
+	"Fractie.h"
+
+1585159959 source:c:\users\valentin\desktop\facultate semii\poo\proiectul1poo\src\fractie.cpp
+	"fractie.h"
+	<iostream>
+
+1584646958 c:\users\valentin\desktop\facultate semii\poo\proiectul1poo\include\fractie.h
+
+1585161882 source:c:\users\valentin\desktop\facultate semii\poo\proiectul1poo\main.cpp
+	<iostream>
+	"Fractie.h"
+
