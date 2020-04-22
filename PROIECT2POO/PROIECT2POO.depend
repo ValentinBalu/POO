@@ -1,0 +1,76 @@
+# depslib dependency file v1.0
+1587050237 source:c:\users\valentin\desktop\facultate semii\lfa\proiect2poo\main.cpp
+	<iostream>
+	"Nod.h"
+
+1586959933 source:c:\users\valentin\desktop\facultate semii\lfa\proiect2poo\src\coada_prioritati.cpp
+	"Coada_prioritati.h"
+
+1586959932 c:\users\valentin\desktop\facultate semii\lfa\proiect2poo\include\coada_prioritati.h
+
+1587049729 source:c:\users\valentin\desktop\facultate semii\lfa\proiect2poo\src\nod_dublu.cpp
+	"Nod_dublu.h"
+
+1586964103 c:\users\valentin\desktop\facultate semii\lfa\proiect2poo\include\nod_dublu.h
+	<iostream>
+	"Nod.h"
+
+1586959909 source:c:\users\valentin\desktop\facultate semii\lfa\proiect2poo\src\nod_prioritate.cpp
+	"Nod_prioritate.h"
+
+1586959909 c:\users\valentin\desktop\facultate semii\lfa\proiect2poo\include\nod_prioritate.h
+
+1587050395 source:c:\users\valentin\desktop\facultate semii\lfa\proiect2poo\src\nod.cpp
+	"Nod.h"
+
+1587050279 c:\users\valentin\desktop\facultate semii\lfa\proiect2poo\include\nod.h
+	<iostream>
+
+1587589977 source:c:\users\valentin\desktop\facultate semii\poo\proiect2poo\main.cpp
+	<iostream>
+	"Nod.h"
+	"Nod_dublu.h"
+	"Nod_prioritate.h"
+	"Coada_prioritati.h"
+
+1587571606 c:\users\valentin\desktop\facultate semii\poo\proiect2poo\include\nod.h
+	<iostream>
+
+1587590412 source:c:\users\valentin\desktop\facultate semii\poo\proiect2poo\src\coada_prioritati.cpp
+	"Coada_prioritati.h"
+	<iostream>
+
+1587587140 c:\users\valentin\desktop\facultate semii\poo\proiect2poo\include\coada_prioritati.h
+	<iostream>
+	"Nod_prioritate.h"
+
+1587570811 source:c:\users\valentin\desktop\facultate semii\poo\proiect2poo\src\nod.cpp
+	"Nod.h"
+
+1587589560 source:c:\users\valentin\desktop\facultate semii\poo\proiect2poo\src\nod_prioritate.cpp
+	"Nod_prioritate.h"
+	"Exceptia.h"
+
+1587571590 c:\users\valentin\desktop\facultate semii\poo\proiect2poo\include\nod_prioritate.h
+	<iostream>
+	"Nod_dublu.h"
+
+1587570950 source:c:\users\valentin\desktop\facultate semii\poo\proiect2poo\src\nod_dublu.cpp
+	"Nod_dublu.h"
+
+1587570950 c:\users\valentin\desktop\facultate semii\poo\proiect2poo\include\nod_dublu.h
+	<iostream>
+	"Nod.h"
+
+1587403419 source:c:\users\valentin\desktop\facultate semii\poo\proiect2poo\src\node1.cpp
+	"Node1.h"
+
+1587403419 c:\users\valentin\desktop\facultate semii\poo\proiect2poo\include\node1.h
+	<iostream>
+
+1587589058 source:c:\users\valentin\desktop\facultate semii\poo\proiect2poo\src\exceptia.cpp
+	"Exceptia.h"
+
+1587589045 c:\users\valentin\desktop\facultate semii\poo\proiect2poo\include\exceptia.h
+	<exception>
+
