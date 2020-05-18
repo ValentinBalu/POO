@@ -1,0 +1,295 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+class Masina{
+protected:
+    int cai_putere;
+    int capacitate_rezervor;
+    string marca;
+public:
+    Masina(int cai_putere=0, int capacitate_rezervor=0, string marca=""):cai_putere(cai_putere),capacitate_rezervor(capacitate_rezervor),marca(marca){}
+    Masina(const Masina &other):cai_putere(other.cai_putere),capacitate_rezervor(other.capacitate_rezervor),marca(other.marca){}
+    ~Masina()=default;
+    virtual void afisare(){
+    cout<<"Cai putere : "<<this->cai_putere<<" , "<<"Capacitate rezervor : "<<this->capacitate_rezervor<<" , "<<"Marca : "<<this->marca<<'\n';
+    }
+    friend istream& operator>> (istream&, Masina&);
+    friend ostream& operator<< (ostream&, Masina&);
+};
+
+istream& operator>>(istream &in, Masina &masina){
+    cout<<"Introduceti numarul de cai putere, capacitatea rezervorului in cm3, marca masinii"<<'\n';
+    in>>masina.cai_putere;
+    in>>masina.capacitate_rezervor;
+    in>>masina.marca;
+    return in;
+}
+
+ostream& operator<<(ostream &cout, Masina &masina)
+{
+    masina.afisare();
+    return cout;
+}
+
+class Coupe : public Masina{
+public:
+    Coupe(int cai_putere=0,int capacitate_rezervor=0,string marca=""):Masina(cai_putere,capacitate_rezervor,marca){}
+    Coupe(const Coupe &other):Masina(other){}
+    ~Coupe()=default;
+    void afisare(){
+        cout<<"Tip : Coupe , ";
+        cout<<"Cai putere : "<<this->cai_putere<<" , "<<"Capacitate rezervor : "<<this->capacitate_rezervor<<" , "<<"Marca : "<<this->marca<<'\n';
+    }
+    friend istream& operator>> (istream&, Coupe&);
+    friend ostream& operator<< (ostream&, Coupe&);
+};
+
+istream& operator>>(istream &in,Coupe &masina){
+    in>>dynamic_cast<Masina&>(masina);
+    return in;
+}
+
+ostream& operator<<(ostream &cout,Coupe &masina)
+{
+    masina.afisare();
+    return cout;
+}
+
+class Hot_hatch : public Masina{
+    int tip_motor; ///0-benzina,1-diesel
+public:
+    Hot_hatch(int cai_putere=0,int capacitate_rezervor=0,string marca="",int tip_motor=-1):Masina(cai_putere,capacitate_rezervor,marca),tip_motor(tip_motor){}
+    Hot_hatch(const Hot_hatch &other):Masina(other),tip_motor(other.tip_motor){}
+    ~Hot_hatch()=default;
+    void afisare(){
+        cout<<"Tip : Hot-Hatch , ";
+        cout<<"Cai putere : "<<this->cai_putere<<" , "<<"Capacitate rezervor : "<<this->capacitate_rezervor<<" , "<<"Marca : "<<this->marca<<" , "<<"Tip motor : ";
+        if (this->tip_motor==0)
+            cout<<"Benzina"<<'\n';
+        else
+            cout<<"Diesel"<<'\n';
+    }
+    friend istream& operator>> (istream&, Hot_hatch&);
+    friend ostream& operator<< (ostream&, Hot_hatch&);
+};
+
+istream& operator>>(istream &in,Hot_hatch &masina){
+    in>>dynamic_cast<Masina&>(masina);
+    cout<<"Adaugati si tipul motorului : 0-benzina, 1-diesel"<<'\n';
+    in>>masina.tip_motor;
+    return in;
+}
+
+ostream& operator<<(ostream &cout,Hot_hatch &masina)
+{
+    masina.afisare();
+    return cout;
+}
+
+class Cabrio : public Masina{
+    int tip_acoperis;///0-metalic,1-textil
+public:
+    Cabrio(int cai_putere=0,int capacitate_rezervor=0,string marca="",int tip_acoperis=-1):Masina(cai_putere,capacitate_rezervor,marca),tip_acoperis(tip_acoperis){}
+    Cabrio(const Cabrio &other):Masina(other),tip_acoperis(tip_acoperis){}
+    ~Cabrio()=default;
+    void afisare(){
+        cout<<"Tip : Cabrio , ";
+        cout<<"Cai putere : "<<this->cai_putere<<" , "<<"Capacitate rezervor : "<<this->capacitate_rezervor<<" , "<<"Marca : "<<this->marca<<" , "<<"Tip acoperis : ";
+        if(this->tip_acoperis==0)
+            cout<<"Metalic"<<'\n';
+        else
+            cout<<"Textil"<<'\n';
+    }
+    friend istream& operator>> (istream&, Cabrio&);
+    friend ostream& operator<< (ostream&, Cabrio&);
+};
+
+istream& operator>>(istream &in,Cabrio &masina){
+    in>>dynamic_cast<Masina&>(masina);
+    cout<<"Adaugati si tipul acoperisului : 0-metalic, 1-textil"<<'\n';
+    in>>masina.tip_acoperis;
+    return in;
+}
+
+ostream& operator<<(ostream &cout,Cabrio &masina)
+{
+    masina.afisare();
+    return cout;
+}
+
+class SuperSport : public Masina{
+    int pret;
+    static int nr_masiniSS;
+public:
+    SuperSport(int cai_putere=0,int capacitate_rezervor=0,string marca="",int pret=-1):Masina(cai_putere,capacitate_rezervor,marca),pret(pret){nr_masiniSS++;}
+    SuperSport(const SuperSport &other):Masina(other),pret(pret){nr_masiniSS++;}
+    ~SuperSport(){nr_masiniSS--;}
+    void setpret(int pret){
+        this->pret=pret;
+    }
+    void afisare(){
+        cout<<"Tip : SuperSport , ";
+        cout<<"Cai putere : "<<this->cai_putere<<" , "<<"Capacitate rezervor : "<<this->capacitate_rezervor<<" , "<<"Marca : "<<this->marca<<" , "<<"Pret : "<<this->pret<<'\n';
+    }
+    friend istream& operator>> (istream&, SuperSport&);
+    friend ostream& operator<< (ostream&, SuperSport&);
+    static void getnr_masiniSS(){
+        cout<<nr_masiniSS;
+    }
+};
+int SuperSport::nr_masiniSS=0;
+
+istream& operator>>(istream &in,SuperSport &masina){
+    in>>dynamic_cast<Masina&>(masina);
+    return in;
+}
+
+ostream& operator<<(ostream &cout,SuperSport &masina)
+{
+    masina.afisare();
+    return cout;
+}
+
+//template<class T>
+class Expozitie{
+    static int numar_masini_expuse;
+    vector<Masina*> masini_expuse;
+    vector<SuperSport*> SS_stoc;
+    vector<SuperSport*> SS_vandute;
+public:
+    Expozitie(){}
+    ~Expozitie(){
+        for(int i=0;i<masini_expuse.size();i++)
+            delete masini_expuse[i];
+    }
+    void setmasini(int op1){
+        if(op1==1){
+                Coupe* m1=new Coupe;
+                cin>>*m1;
+                masini_expuse.push_back(m1);
+                numar_masini_expuse++;
+            }
+            if(op1==2){
+                Hot_hatch* m2=new Hot_hatch;
+                cin>>*m2;
+                masini_expuse.push_back(m2);
+                numar_masini_expuse++;
+            }
+            if(op1==3){
+                Cabrio* m3=new Cabrio;
+                cin>>*m3;
+                masini_expuse.push_back(m3);
+                numar_masini_expuse++;
+            }
+            if(op1==4){
+                SuperSport* m4=new SuperSport;
+                cin>>*m4;
+                masini_expuse.push_back(m4);
+                SS_stoc.push_back(m4);
+                numar_masini_expuse++;
+            }
+    }
+    void getmasini(){
+        for(int i=0;i<masini_expuse.size();i++)
+            (*masini_expuse[i]).afisare();
+    }
+    void getnrmasini(){
+        cout<<numar_masini_expuse<<" ";
+    }
+    void getSS_stoc(){
+        for(int i=0;i<SS_stoc.size();i++)
+            (*SS_stoc[i]).afisare();
+    }
+};
+int Expozitie::numar_masini_expuse=0;
+void afisare_meniu(){
+    cout<<"MENIU"<<'\n';
+    cout<<"1. Introduceti o noua masina in expozitie!"<<'\n';
+    cout<<"2. Afisati numarul total de masini expuse!"<<'\n';
+    cout<<"3. Afisati masinile din cadrul expozitiei!"<<'\n';
+    cout<<"4. Doriti sa cumparati o masina de tip SuperSport?"<<'\n';
+    cout<<"5. Afisati numarul de masini de tip SuperSport din stoc si care sunt acestea!"<<'\n';
+    cout<<"6. Afisati numarul de masini de tip SuperSport vandute si care sunt acestea!"<<'\n';
+    cout<<"7. Exit"<<'\n'<<'\n';
+
+
+}
+int op,op1;
+int main()
+{
+    Expozitie Exp;
+    do{
+        afisare_meniu();
+        cin>>op;
+        if(op==1){
+            cout<<"Ce tip de masina doriti sa introduceti?"<<'\n'<<'\n';
+            cout<<"1.Coupe"<<endl;
+            cout<<"2.Hot_hatch"<<endl;
+            cout<<"3.Cabrio"<<endl;
+            cout<<"4.Supersport"<<endl<<endl;
+            cin>>op1;
+            Exp.setmasini(op1);
+        }
+        else if(op==2){
+            cout<<"In cadrul expozitiei sunt ";
+            Exp.getnrmasini();
+            cout<<"masini expuse."<<'\n';
+        }
+        else if(op==3){
+            Exp.getmasini();
+        }
+        else if(op==5){
+            cout<<"Numarul de masini de tip SuperSport din cadrul expozitiei este de ";
+            SuperSport::getnr_masiniSS();
+            cout<<" masini.\n";
+            cout<<"Acestea sunt : "<<'\n';
+            Exp.getSS_stoc();
+        }
+        else if(op==7)
+            break;
+        else
+            cout<<"Introduceti o optiune valida!\n\n";
+    }while(true);
+
+    /*Masina a1(4,6,"bmw");
+    a1.afisare();
+    Coupe a2(5,8,"audi");
+    a2.afisare();
+    Masina a3;
+    a3.afisare();
+    SuperSport a4;
+    a4.afisare();
+    Hot_hatch a5(50,100,"bentley",0);
+    a5.afisare();
+    Cabrio a6(12,31,"passat",1);
+    a6.afisare();
+    SuperSport a7(12,100,"audi r8");
+    a7.afisare();
+    Masina a8;
+    cin>>a8;
+    a8.afisare();
+    Coupe a9;
+    cin>>a9;
+    a9.afisare();
+    Hot_hatch a10;
+    cin>>a10;
+    a10.afisare();
+    Cabrio a11;
+    cin>>a11;
+    a11.afisare();
+    SuperSport a12;
+    cin>>a12;
+    a12.afisare();
+    a12.setpret(3000);
+    a12.afisare();
+    vector<Masina*> masini;
+    masini.push_back(&a1);
+    masini.push_back(&a2);
+    masini.push_back(&a3);
+    masini.push_back(&a4);
+    for(int i=0;i<masini.size();i++)
+        (*masini[i]).afisare();*/
+    return 0;
+}

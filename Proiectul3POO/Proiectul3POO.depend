@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1589733322 source:c:\users\valentin\desktop\facultate semii\poo\proiectul3poo\main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<exception>
+
